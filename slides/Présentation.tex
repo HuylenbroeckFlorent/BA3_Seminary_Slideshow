@@ -87,4 +87,54 @@
 	\includegraphics[scale=1.75]{resources/BDG1.png}
 	\end{center}
 }
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Intéressons nous maintenant à une requête plus compliquée sur une autre base de données.\\
+	\emph{Quel est ce film parlant de sous-marins dans lequel joue l'acteur qui était dans un autre film aux cotés de l'acteur principal de "Gone With the Wind" ?}
+}
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Dans notre base de données relationnelle :\\
+	\begin{itemize}
+		\item Trouver les acteurs de "Gone With the Wind".
+		\item Trouver tous les films dans lesquels ces acteurs ont joués.
+		\item Trouver tous les acteurs ayant joués dans ces films et n'étant pas l'acteur principal de "Gone With the Wind".
+		\item Trouver tous les films dans lesquels chacuns de ces acteurs ont joués.
+		\item Finalement, rechercher le mot "sous-marin" dans la description de ceux-ci.
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Dans notre base de données en graphe :\\
+	\begin{itemize}
+		\item Trouver le noeud "Gone With the Wild".
+		\item Suivre le lien "a comme acteur principal" pour arriver a Clark Gable.
+		\item Suivre les liens "a joué dans" en partant de celui-ci.
+		\item Suivre les liens "a pour acteur" en partant des films ainsi atteints.
+		\item Suivre les liens "a joué dans" en partant de ceux-ci.
+		\item Examiner les noeuds atteints à la recherche du mot "sous-marin".
+	\end{itemize}
+	Nous n'avons fait que suivre des liens, aucune recherche n'a été effectuée.
+}
+
+
+\frame{
+	\frametitle{A venir}
+	RDB\\
+-Lourd en execution avec les jointures (mutliples recherches)\\
+-Lourd écriture + connaissance obligée\\
+-Moins flexible, demande de re design les table si on veut ajouter un élément ponctuel\\
+
+-Mieux pour des recherche au sein d'une table donnée, ou pour appliquer une transformation à chaque ligne d'une table\\
+
+-Design plus mature, plus étudié\\
+-Existent déjà partout. Ce n'est pas un avantage mais c'est un désavantage pour GDB: on ne peut pas nier que les gros changements sont un désavantage, même si l'autre modèle est jugé intrinsèquement mieux\\
+	=> utilisation mixée des deux modèles.
+}
 \end{document}

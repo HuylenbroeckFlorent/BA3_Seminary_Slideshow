@@ -23,13 +23,9 @@
 
 
 \begin{document}
-\title{Titre}
+\title{Comparaison des modèles de base de données relationnel et en graphe}
+\date{15 mai 2019}
 \maketitle
-
-\frame{
-   \frametitle{Sommaire}
-   \tableofcontents[currentsubsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
-}
 
 \frame{
 	\frametitle{Rappel théorique}
@@ -70,8 +66,8 @@
 		\item Rechercher dans la table (liker\_ID, liked\_ID) toutes les occurence de l'ID de Bob.
 	\end{itemize}
 	\begin{center}
-		\includegraphics[scale=0.62]{resources/BDR1.png}
-		\includegraphics[scale=0.62]{resources/BDR2.png}
+		\includegraphics[scale=.9]{resources/reqBDR1.png}
+		
 	\end{center}
 }
 
@@ -84,7 +80,7 @@
 		\item Les arcs "liked" partant de Bob nous donne immédiatement l'information recherchée.
 	\end{itemize}
 	\begin{center}
-	\includegraphics[scale=1.75]{resources/BDG1.png}
+	\includegraphics[scale=1.25]{resources/reqBDG1.png}
 	\end{center}
 }
 
@@ -123,18 +119,74 @@
 	Nous n'avons fait que suivre des liens, aucune recherche n'a été effectuée.
 }
 
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	\begin{center}
+		\includegraphics[scale=0.3]{resources/imageGDR1.png}
+	\end{center}
+	Exemple de la diversité d'informations contenue dans une base de données en graphe.\\[.1cm]
+	\tiny Source : \emph{https://arstechnica.com/information-technology/2013/03/knowing-the-score-how-facebooks-graph-search-knows-what-you-want/?fbclid=IwAR2EOPrLyCSpvCYYVMuaAN094E6yqHGojkxAwxJCgiZAFIMZFob4NjHLM4k}
+	
+}
 
 \frame{
-	\frametitle{A venir}
-	RDB\\
--Lourd en execution avec les jointures (mutliples recherches)\\
--Lourd écriture + connaissance obligée\\
--Moins flexible, demande de re design les table si on veut ajouter un élément ponctuel\\
-
--Mieux pour des recherche au sein d'une table donnée, ou pour appliquer une transformation à chaque ligne d'une table\\
-
--Design plus mature, plus étudié\\
--Existent déjà partout. Ce n'est pas un avantage mais c'est un désavantage pour GDB: on ne peut pas nier que les gros changements sont un désavantage, même si l'autre modèle est jugé intrinsèquement mieux\\
-	=> utilisation mixée des deux modèles.
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Autres avantages/inconvénients du modèle relationnel}
+	\textbf{Avantages :}
+	\begin{itemize}
+		\item L'application d'une transformation sur un grand nombre de ligne de la table est immédiate.
+		\item Le modèle est plus ancien et plus répandu. Il a donc été plus étudié et beaucoup d'outils robustes sont disponibles.
+		\item L'espace de stockage requis est minimal.
+	\end{itemize}
+	\textbf{inconvénients :}
+	\begin{itemize}
+		\item Les grosses requêtes de séléction sont lourdes à exécuter.
+		\item Le modèle est moins flexible, ajouter un attribut nécessite beaucoup de changements au sein des tables.
+	\end{itemize}
+	
+	
 }
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Autres avantages/inconvénients du modèle en graphe}
+	\textbf{Avantages :}
+	\begin{itemize}
+		\item L'ajout d'un attribut est immédiat, il suffit de créer des arcs supplémentaires entre les données, ou un champ de plus dans les noeuds concernés.
+		\item Les requêtes de séléctions sont rapides a exécuter.
+	\end{itemize}
+	\textbf{inconvénients :}
+	\begin{itemize}
+		\item Le modèle est récent, donc il a moins été étudié et moins d'outils sont disponibles.
+		\item L'espace de stockage requis est plus élevé.
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Conclusion}
+	\framesubtitle{Dans le cas de l'utilisation d'un des deux modèles}
+	\textbf{Le modèle relationnel} est adapté à une base de donnée avec peu de relation entre les donnés, ou lorsqu'il y a beaucoup d'écriture à effectuer.\\
+	\textbf{Le modèle en graphe} par contre est adapté pour de grosses bases de données, régies par beaucoup de relation, ou si l'on doit effectuer beaucoup de lectures.
+}
+
+\frame{
+	\frametitle{Conclusion}
+	\framesubtitle{Vers une utilisation mixe des modèles}
+	La solution idéale reste d'utiliser simultanément les deux modèles, par exemple :\\
+	\begin{itemize}
+		\item Un modèle en graphe dont les noeuds contiennent des tables du modèle relationnel.
+		\item Un modèle en graphe dont les plus gros noeuds sont référencés par une table du modèle relationnel.
+		\item Une base de données relationnelle pour l'écriture, correspondant à une base de données en graphe pour les lectures.
+		\item ... 
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Fin}
+	Questions ?\\[2cm]
+	Merci de votre attention.
+}
+
+
 \end{document}

@@ -34,17 +34,57 @@
 \frame{
 	\frametitle{Rappel théorique}
 	\framesubtitle{Base de données relationnelle}
-	Dans une base de données relationelle, les données sont organisées en tables. Les colonnes de ces tables sont appelées des attributs et les lignes sont appelées des tuples.\\[.5cm]
-	\includegraphics[scale=0.62]{resources/RBD.png}
-	Les tables d'une BDR respectent des contraintes et des clés.\\
+	Dans une base de données relationelle, les données sont organisées en tables. Les colonnes de ces tables sont appelées des attributs et les lignes sont appelées des tuples.\\
 	\begin{center}
-		\includegraphics[scale=0.6]{resources/BDRkeys.png}
+	\includegraphics[scale=0.62]{resources/BDR1.png}
+	\includegraphics[scale=0.62]{resources/BDR2.png}
 	\end{center}
+	Les tables d'une BDR respectent des contraintes et des clés.\\
 }
 
 \frame{
 	\frametitle{Rappel théorique}
 	\framesubtitle{Base de données en graphe}
-	Dans une base de données en graphe, les données sont contenues dans des noeuds, et les relations entre les données sont décrite par les arcs reliant ces noeuds. A chaque tupe des tables d'une BDR correspond un noeud en BDG.
+	Dans une base de données en graphe, les données sont contenues dans des noeuds, et les relations entre les données sont décrite par les arcs reliant ces noeuds. A chaque tupe des tables d'une BDR correspond un noeud en BDG. La base de donnée prend la forme d'un graphe orienté.
+	\begin{center}
+	\includegraphics[scale=1.75]{resources/BDG1.png}
+	\end{center}
+}
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Maintenant que nous avons nos données stockées selon les deux modèles, effectuons une requête.
+	Commencons par une requête simple :
+	\emph{Qui est-ce que Bob aime ?}
+}
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Dans notre base de données relationnelle :\\
+	\begin{itemize}
+		\item Rechercher dans la table (ID, name) Bob, pour connaitre son ID.
+		\item Rechercher dans la table (liker\_ID, liked\_ID) toutes les occurence de l'ID de Bob.
+	\end{itemize}
+	\begin{center}
+		\includegraphics[scale=0.62]{resources/BDR1.png}
+		\includegraphics[scale=0.62]{resources/BDR2.png}
+	\end{center}
+}
+
+\frame{
+	\frametitle{Comparaison des modèles}
+	\framesubtitle{Efficacité lors de la séléction}
+	Dans notre base de données en graphe :\\
+	\begin{itemize}
+		\item Trouver Bob.
+		\item Les arcs "liked" partant de Bob nous donne immédiatement l'information recherchée.
+	\end{itemize}
+	\begin{center}
+	\includegraphics[scale=1.75]{resources/BDG1.png}
+	\end{center}
 }
 \end{document}
